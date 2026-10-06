@@ -1,7 +1,7 @@
 ---
 name: build-upload
 description: >
-  Build a policy image through the mixin's tooling and upload it as a new
+  Build a policy artifact through the mixin's tooling and upload it as a new
   inert version, logging the one change it carries before anything else
   happens. Use at loop step 7, after every attributable change, and for a
   first policy's first upload.
@@ -18,7 +18,9 @@ the test**. The one mandatory cost, every time, is the version log row.
 
 ## Method
 
-1. **Build through the mixin's tooling** (`games/<g>/tools/`, per MIXIN.md).
+1. **Resolve the live manifest runtime first.** For `game-hosted` file policies, package the game-defined file or directory and use `coworld upload-policy --file <path> --name <policy>`. Verify current CLI help. Do not pass image-only run, secret, or model flags. Then continue at step 3. For `platform-hosted` policies, follow the image build path below.
+
+   **Build through the mixin's tooling** (`games/<g>/tools/`, per MIXIN.md).
    The mixin pins the game/SDK refs the league actually runs — build against
    the pins, never a moving tip (the pin's rationale is recorded next to it).
    Build for `--platform linux/amd64`; arm64 is rejected at upload.
