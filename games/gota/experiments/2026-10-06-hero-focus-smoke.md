@@ -4,7 +4,7 @@ Status: discovery, both policy uploads, and candidate source commit are complete
 
 ## Authorized scope
 
-One baseline and one candidate, one normal ten-seat episode each; max two experience requests total; existing credits only; no refills, league submissions, or background work. Overall Nous cap: $10 including setup. The request idempotency key and immutable body must be written here/on disk before each create call; persist returned request and episode IDs immediately. Never retry an uncertain create without reconciliation.
+One baseline and one candidate, one normal ten-seat episode each; max two experience requests total; existing credits only; no refills, league submissions, or background work. Overall Nous cap: $10 including setup. The request idempotency key and immutable body must be written here/on disk before each create call; persist returned request and episode IDs immediately. Never retry an uncertain create without reconciliation. No candidate evaluation or functional validation occurred: the baseline create endpoint denied the two identical-key attempts as documented below.
 
 ## Live discovery
 
@@ -25,7 +25,7 @@ Mechanism: when a vulnerable hero enters target range, the score increment makes
 
 Predictions: if true, the candidate will win the one episode and/or produce greater team Glory than baseline against the same pinned roster and game seed. If false, it will lose or fail to improve. Decision rule: one clean episode showing better candidate team outcome/score is only a directional signal; any other or infrastructure-tainted result is inconclusive. Two one-episode requests cannot establish policy strength; any apparent win is not a winning-policy verdict.
 
-Adversarial critique: one episode has negligible statistical power; opponents/roster and seat remain confounds if not pinned identically; a single episode is a screening test for whether the build functions and the intervention looks promising, not a decisive estimate. Compare per-seat/team result and replay events, exclude failures. Human gameplay judgment is limited to the actual inspected replay.
+Adversarial critique: one episode has negligible statistical power; opponents/roster and seat remain confounds if not pinned identically; a single episode would be only a directional screen, not a decisive estimate. Compare per-seat/team result and replay events, exclude failures. No hosted gameplay occurred in this iteration, so there is no policy-function evidence and no actual replay for inspection.
 
 ## External-operation checkpoint ledger
 
@@ -33,6 +33,6 @@ Adversarial critique: one episode has negligible statistical power; opponents/ro
 - Baseline upload: complete, `hermes-gota-iteration:v1` (source commit `eab20515724dc0ea63ce13551333a155c81f7ce3`).
 - Candidate upload: complete, `hermes-gota-iteration:v2` (source commit `856984c58692163e23ee7aa5826a2b180742b3bb`; +60→+100 only).
 - Baseline experience request: denied twice, same persisted request key `hermes-gota-20261006-baseline-58cce3a6-ff1a-436b-9a4d-99c3e6da513b`; platform operation IDs `5dc12f0d-41cd-4a8a-9391-ce2d3278e9e8` and `6846aa8d-1516-412c-8615-633d8a807312`; no xreq/episode IDs.
-- Candidate experience request: not attempted.
-- Replay retrieval/inspection and performance verdict: pending, because neither evaluation request created.
+- Candidate experience request: not attempted; unsubmitted key preserved but not sent.
+- Replay retrieval/inspection and performance verdict: unavailable; no episode was created and no policy was functionally validated.
 - Git pushes: policy and research records pushed to branch `agent/hermes-gota-20261006`.
