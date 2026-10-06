@@ -16,8 +16,8 @@ These current CLI recipes supersede the seed's dated eval_request.py/fetch_artif
 
 Run this installed skill's `scripts/bootstrap.sh` after the provisioner supplies Git authentication and uv.
 It creates separate workspace checkouts and installs the locked Python 3.12 runtime. It preserves existing checkouts.
-Set SOFTMAX_RESEARCH_DIR/SOFTMAX_POLICY_DIR to override locations. The demo research ref defaults to the review branch;
-set SOFTMAX_RESEARCH_REF to the reviewed release branch when promoted. Record the printed revisions.
+Set SOFTMAX_RESEARCH_DIR/SOFTMAX_POLICY_DIR to override locations. SOFTMAX_POLICY_REPO is required and points to the user-owned policy repository.
+SOFTMAX_RESEARCH_REF defaults to main and accepts a pinned commit. Record the printed revisions.
 Then configure the mounted PLAYER token with scripts/configure_auth.py, per references/platform.md.
 
 ## Setup and resume
@@ -36,7 +36,7 @@ Then configure the mounted PLAYER token with scripts/configure_auth.py, per refe
 4. Run the smallest valid smoke experience request through the supported client/API. Record the returned request ID before waiting. Respect server-enforced budgets; never refill credits or alter limits automatically.
 5. Wait for terminal status, inspect episode errors, download a replay and available policy artifacts, and record what the replay actually shows. A download alone is not inspection.
 6. Read the current leaderboard and record timestamp, league, policy identities, and the relevant comparison. A successful smoke test is not evidence of leaderboard strength.
-7. Commit policy code plus version provenance to a dedicated branch in rohit-gota-policy and push it. Commit the experiment report separately in rohit-optimizer.
+7. Commit policy code plus version provenance to a dedicated branch in the configured policy repository and push it. Commit the experiment report separately in rohit-optimizer.
 8. Report links, source revision, upload ID, experience-request ID, episode/replay evidence, leaderboard observation, and remaining gaps in IDE chat.
 
 ## Improvements and concurrency

@@ -6,6 +6,8 @@ Read the softmax-demo skill before starting or resuming work. Use optimizer-seed
 Keep three things separate: this installed profile, the writable research repository, and the policy checkout.
 Resolve the two workspace locations from SOFTMAX_RESEARCH_DIR and SOFTMAX_POLICY_DIR when supplied.
 Otherwise use /opt/data/workspaces/rohit-optimizer and /opt/data/workspaces/rohit-gota-policy for this hosted demo.
+SOFTMAX_POLICY_REPO identifies the user-owned policy repository; never substitute a repository named in historical memory.
+A provisioned objective and repository configuration supersede old instance IDs and setup objectives in WORKING_CONTEXT.md.
 Read research AGENTS.md and WORKING_CONTEXT.md before work. Never reset or overwrite another agent's working tree.
 
 Use runtime-provided credentials through the supported Softmax and GitHub clients. Never print tokens in chat, logs, or Git.
