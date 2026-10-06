@@ -1,0 +1,726 @@
+{
+  "$ref": "#/components/schemas/V2CreateExperienceRequestRequest",
+  "components": {
+    "schemas": {
+      "V2CreateExperienceRequestRequest": {
+        "properties": {
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 5,
+                "pattern": "^[^\\x00]*$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Idempotency Key",
+            "description": "Key that makes repeated create requests return the same experience request."
+          },
+          "private": {
+            "type": "boolean",
+            "title": "Private",
+            "description": "Limit the request, episodes, and artifacts to the requester.",
+            "default": false
+          },
+          "episode_player_llm_spend_limit_usd": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Episode Player Llm Spend Limit Usd",
+            "description": "Combined player language-model spend limit per episode in US dollars, allocated evenly across seats."
+          },
+          "coworld_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^cow_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coworld Id",
+            "description": "Coworld to run directly."
+          },
+          "variant_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variant Id",
+            "description": "Variant to run within the direct Coworld."
+          },
+          "target": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/V2ExperienceRequestTarget"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Coworld, league, or division to resolve as the run target."
+          },
+          "game_config_overrides": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Game Config Overrides",
+            "description": "Top-level game configuration values validated against the Coworld schema."
+          },
+          "game_config_overlay_secret": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Game Config Overlay Secret",
+            "description": "Private Coworld configuration secret merged before public overrides."
+          },
+          "state": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/V2CoworldState"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Game state to load. Omit it to start with new state."
+          },
+          "roster": {
+            "items": {
+              "$ref": "#/components/schemas/V2RosterParticipant"
+            },
+            "type": "array",
+            "title": "Roster",
+            "description": "Policy selector for each game seat."
+          },
+          "included_players": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Included Players",
+            "description": "Limit champion selection to these player IDs or names. Explicit policy seats are unaffected."
+          },
+          "excluded_players": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Excluded Players",
+            "description": "Exclude these player IDs or names from champion selection. Exclusions take precedence."
+          },
+          "num_episodes": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "Num Episodes",
+            "description": "Number of episodes to create.",
+            "default": 1
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes",
+            "description": "Note explaining the request's purpose."
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title",
+            "description": "Agent-written title: what this request tests, on one line. Recommended at most 50 characters; any length is accepted."
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description",
+            "description": "Agent-written description: what changed, why, and the expected result. Recommended at most 600 characters; any length is accepted."
+          },
+          "execution_backend": {
+            "type": "string",
+            "const": "k8s",
+            "title": "Execution Backend",
+            "description": "Execution system used for the episodes.",
+            "default": "k8s"
+          },
+          "reporters": {
+            "items": {
+              "$ref": "#/components/schemas/ReporterBindingSpec"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "title": "Reporters",
+            "description": "Reporters to run after completion, including optional dependencies. Runs are billed to the requester."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "roster"
+        ],
+        "title": "V2CreateExperienceRequestRequest"
+      },
+      "ReporterBindingSpec": {
+        "properties": {
+          "reporter": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PinnedReporterRef-Input"
+              },
+              {
+                "$ref": "#/components/schemas/LatestReporterRef-Input"
+              }
+            ],
+            "title": "Reporter",
+            "description": "Reporter version to run.",
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "latest": "#/components/schemas/LatestReporterRef-Input",
+                "version": "#/components/schemas/PinnedReporterRef-Input"
+              }
+            }
+          },
+          "params": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Params",
+            "description": "Parameters passed to the reporter."
+          },
+          "limits": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReporterLimitsOverride"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Run-limit overrides."
+          },
+          "dependencies": {
+            "items": {
+              "$ref": "#/components/schemas/ReporterDependencySpec-Input"
+            },
+            "type": "array",
+            "title": "Dependencies",
+            "description": "Reporter runs that must complete before this run."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reporter"
+        ],
+        "title": "ReporterBindingSpec"
+      },
+      "ReporterDependencySpec-Input": {
+        "properties": {
+          "reporter": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PinnedReporterRef-Input"
+              },
+              {
+                "$ref": "#/components/schemas/LatestReporterRef-Input"
+              }
+            ],
+            "title": "Reporter",
+            "description": "Reporter version used for this dependency.",
+            "discriminator": {
+              "propertyName": "kind",
+              "mapping": {
+                "latest": "#/components/schemas/LatestReporterRef-Input",
+                "version": "#/components/schemas/PinnedReporterRef-Input"
+              }
+            }
+          },
+          "params": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Params",
+            "description": "Parameters passed to the dependency reporter."
+          },
+          "limits": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReporterLimitsOverride"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Run-limit overrides for this dependency."
+          },
+          "reuse": {
+            "$ref": "#/components/schemas/ReporterDependencyReuse",
+            "description": "Rules for reusing an existing matching dependency run."
+          },
+          "dependencies": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "description": "Nested prerequisites using this same ReporterDependencySpec shape."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reporter"
+        ],
+        "title": "ReporterDependencySpec"
+      },
+      "ReporterDependencyReuse": {
+        "properties": {
+          "completed": {
+            "type": "boolean",
+            "title": "Completed",
+            "description": "Allow reuse of a matching completed run.",
+            "default": true
+          },
+          "max_age_seconds": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Age Seconds",
+            "description": "Maximum age of a reusable completed run, in seconds. Null allows any age."
+          },
+          "in_flight": {
+            "type": "boolean",
+            "title": "In Flight",
+            "description": "Allow reuse of a matching queued or running run.",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ReporterDependencyReuse"
+      },
+      "ReporterLimitsOverride": {
+        "properties": {
+          "memory_mib": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Memory Mib",
+            "description": "Maximum guest memory in mebibytes."
+          },
+          "guest_cpu_seconds": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guest Cpu Seconds",
+            "description": "Maximum CPU time available to the guest, in seconds."
+          },
+          "wall_clock_seconds": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Wall Clock Seconds",
+            "description": "Maximum elapsed run time, in seconds."
+          },
+          "scratch_mib": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scratch Mib",
+            "description": "Maximum scratch storage in mebibytes."
+          },
+          "tool_calls": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Calls",
+            "description": "Maximum number of tool calls."
+          },
+          "llm_usd": {
+            "anyOf": [
+              {
+                "type": "number",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llm Usd",
+            "description": "Maximum language-model spend in US dollars."
+          },
+          "artifact_read_mib": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Read Mib",
+            "description": "Maximum artifact data the run may read, in mebibytes."
+          },
+          "output_mib": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Output Mib",
+            "description": "Maximum size of each output part, in mebibytes."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ReporterLimitsOverride"
+      },
+      "LatestReporterRef-Input": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "latest",
+            "title": "Kind",
+            "description": "Selects the latest reporter version.",
+            "default": "latest"
+          },
+          "reporter_id": {
+            "type": "string",
+            "pattern": "^rptr_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "title": "Reporter Id",
+            "description": "Reporter whose latest version will run."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reporter_id"
+        ],
+        "title": "LatestReporterRef"
+      },
+      "PinnedReporterRef-Input": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "const": "version",
+            "title": "Kind",
+            "description": "Selects a specific reporter version.",
+            "default": "version"
+          },
+          "reporter_version_id": {
+            "type": "string",
+            "pattern": "^rv_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "title": "Reporter Version Id",
+            "description": "Reporter version to run."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reporter_version_id"
+        ],
+        "title": "PinnedReporterRef"
+      },
+      "V2RosterParticipant": {
+        "properties": {
+          "player": {
+            "$ref": "#/components/schemas/V2RosterPlayer",
+            "description": "Policy selector for this roster entry."
+          },
+          "slot": {
+            "type": "integer",
+            "minimum": -1.0,
+            "title": "Slot",
+            "description": "Seat index, or -1 to rotate through open seats.",
+            "default": -1
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "player"
+        ],
+        "title": "V2RosterParticipant"
+      },
+      "V2RosterPlayer": {
+        "properties": {
+          "policy_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Policy Ref",
+            "description": "Policy label such as `name:v3`, or a policy-version UUID."
+          },
+          "top_n": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 100.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Top N",
+            "description": "Select from the top N champions in the target league or division."
+          },
+          "random": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Random",
+            "description": "Select a random champion from the target league for each episode."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "V2RosterPlayer",
+        "description": "Exactly one roster player selector must be set."
+      },
+      "V2CoworldState": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "head",
+              "snapshot"
+            ],
+            "title": "Mode",
+            "description": "State version to load: live head state or an immutable snapshot."
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "player",
+              "world"
+            ],
+            "title": "Scope",
+            "description": "Whether the state belongs to selected players or the shared world.",
+            "default": "player"
+          },
+          "participants": {
+            "items": {
+              "$ref": "#/components/schemas/V2CoworldStateParticipant"
+            },
+            "type": "array",
+            "title": "Participants",
+            "description": "Players whose state to load, in roster order."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mode"
+        ],
+        "title": "V2CoworldState"
+      },
+      "V2CoworldStateParticipant": {
+        "properties": {
+          "player_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Player Id",
+            "description": "Player whose game state to load."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "player_id"
+        ],
+        "title": "V2CoworldStateParticipant"
+      },
+      "V2ExperienceRequestTarget": {
+        "properties": {
+          "coworld_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^cow_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coworld Id",
+            "description": "Coworld to run directly."
+          },
+          "variant_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variant Id",
+            "description": "Variant to run within the selected Coworld."
+          },
+          "league_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^league_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "League Id",
+            "description": "League whose canonical Coworld to run."
+          },
+          "league_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "League Name",
+            "description": "League name to resolve when no league ID is provided."
+          },
+          "division_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^div_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Division Id",
+            "description": "Division whose league and canonical Coworld to run."
+          },
+          "division_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Division Name",
+            "description": "Division name to resolve within the selected league."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "V2ExperienceRequestTarget"
+      }
+    }
+  }
+}

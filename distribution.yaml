@@ -1,0 +1,8 @@
+name: softmax-research-demo
+version: 0.1.0
+description: IDE-driven GOTA policy development proof of concept
+# Keep mutable research memory and policy checkouts outside distribution ownership.
+distribution_owned:
+  - distribution.yaml
+  - SOUL.md
+  - skills
