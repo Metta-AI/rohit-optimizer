@@ -9,7 +9,9 @@ command -v uv >/dev/null
 clone_workspace() {
   local remote="$1" destination="$2" branch="$3"
   if [ -e "$destination" ]; then
-    test "$(git -C "$destination" remote get-url origin)" = "$remote"
+    local configured_remote
+    configured_remote="$(git -C "$destination" config --get remote.origin.url)"
+    test "${configured_remote%.git}" = "${remote%.git}"
     git -C "$destination" status --short
   else
     mkdir -p "$(dirname "$destination")"
