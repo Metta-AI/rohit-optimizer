@@ -36,4 +36,3 @@ Adversarial critique: one episode has negligible statistical power; opponents/ro
 - Candidate experience request: not attempted.
 - Replay retrieval/inspection and performance verdict: pending, because neither evaluation request created.
 - Git pushes: policy and research records pushed to branch `agent/hermes-gota-20261006`.
-
