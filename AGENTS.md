@@ -301,7 +301,7 @@ Use these words to mean exactly this, everywhere — skills, records, reports:
 
 ## This workspace's separate policy repository
 
-Policy source and VERSION_LOG.md live in https://github.com/Metta-AI/rohit-gota-policy, checked out separately.
+Policy source and VERSION_LOG.md live in the separate policy checkout configured for the current task.
 The seed's games/<game>/players paths describe its default bundled layout; this workspace uses the external policy checkout instead.
 Research records stay here and identify the policy repository and immutable commit. Never vendor a second editable policy copy here.
 Each agent has its own checkout and branch. Credentials remain outside both repositories.
