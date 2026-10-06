@@ -2,8 +2,8 @@
 
 ## Current objective
 
-Prepare one resumable Hermes agent using this research repository and the separate GOTA policy repository.
-Prove checkout and research-state persistence across restart before starting an optimization campaign.
+Run one bounded GOTA iteration: baseline then one attributable candidate behavior change, each uploaded and evaluated in one normal 10-seat episode. Inspect downloaded replays and analyze performance; push policy provenance/source and research report to agent-owned branches. Maximum two experience requests, existing credits only, no refill, league submission or background scheduling. Preserve idempotency keys before submit and request/episode IDs immediately after; reconcile uncertainty before retrying. User authorized autonomy through completion, with an overall Nous spending cap of $10 including setup. If evaluation is blocked by a real auth/credit/platform boundary, stop evaluation without bypass and complete independent discovery/code/report/push tasks.
+
 
 ## Active games
 
