@@ -33,4 +33,3 @@ Candidate is one score-weight change at `policy.bas` line 201: visible enemy-her
 - No experience-request POST was executed; there are no request IDs, episode IDs, replays, or performance verdicts.
 - A functional one-change candidate is present in the pushed policy commit, but its upload and hosted evaluation are not verified. There is no hypothesis verdict beyond inconclusive due to missing data.
 - The leaderboard supplies current context, not evidence about this candidate. A single run each (if later resumed under the authorization) is only directional and would not establish competitive strength.
-
