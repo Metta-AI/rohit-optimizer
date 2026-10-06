@@ -25,3 +25,8 @@ repositories (player_labs, optimizer-skills, cogamer, co-gas), synthesizing
 their shared kernel and best individual capabilities into one cohesive system.
 Design documents live in the optim-compare project alongside this seed's
 upstream.
+
+## This planting
+
+Planted 2026-10-06 from upstream commit `7ebea87334331e8410f4c0f2ccf5e2376d81cd1f`.
+Policy ownership is deliberately separate from research memory.

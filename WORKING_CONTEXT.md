@@ -1,36 +1,34 @@
-# Working context — optimizer-wide
-
-The live, one-screen state of what this optimizer is doing *right now*. Not a
-log, not an archive: finished work lives in git history and the records; this
-file is what a fresh agent reads to resume. Prune on read; reseed on pivot.
-
-**Routing signal:** if "Current objective" below is empty, this optimizer has
-not been onboarded — start with `docs/getting-started.md`. A recorded objective
-means onboarding is done; never re-run it, never re-ask what's recorded here.
+# Working context
 
 ## Current objective
 
-*(none — run onboarding)*
+Prepare one resumable Hermes agent using this research repository and the separate GOTA policy repository.
+Prove checkout and research-state persistence across restart before starting an optimization campaign.
 
 ## Active games
 
-*(none installed — `tools/add_game.sh <mixin-repo-url>`)*
+GOTA setup pending. Policy repository: https://github.com/Metta-AI/rohit-gota-policy.
+No game mixin installed. League identity, current game revision, and evaluation bindings remain unverified.
 
 ## Open threads
 
-*(none)*
+Install both private repositories on the existing Hermes instance through supported Git authentication.
+Load these instructions and skills, then verify a recorded file and both Git revisions after restart.
+The Softmax backend integration is separate work; the earlier laptop bridge was temporary.
 
-## Watched ids
+## Identity
 
-*(eval batches, submissions, or anything else being monitored — with what to
-do when each turns terminal)*
-
-## Load-bearing facts
-
-*(things a resuming agent must know that live nowhere else — keep short, move
-anything durable to its proper home per the AGENTS.md state map)*
+Softmax player: ply_305f0175-65a2-47ca-9566-69991871b743.
+Hermes instance: softmax-ide-test; durable chat session: 20261005_232250_b09ac9.
 
 ## Harness wiring
 
-*(recorded by the self-wiring step during onboarding: which runtime, which
-hooks were installed, date)*
+Not installed yet. Follow harness/README.md and harness/other/README.md.
+Use native Hermes hooks where supported; record verified wiring rather than assuming hooks run.
+The seed's documented checklist fallback is available if no compatible hook exists.
+
+## Policy ownership
+
+Policy source and VERSION_LOG.md belong to the separate policy repository.
+Research records belong here and cite immutable policy commit IDs.
+Multiple agents will use independent checkouts and branches. Only one agent is in scope now.

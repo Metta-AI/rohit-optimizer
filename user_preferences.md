@@ -1,20 +1,9 @@
 # User preferences
 
-Durable preferences the human has stated — recorded **verbatim**, with
-attribution and date, so they persist across sessions and models. Read this at
-session start. Warn before contravening anything here.
+Rohit, 2026-10-06:
 
-Record a preference when the human states one explicitly, or when repeated
-corrections make one clear (then confirm it with them before recording).
+> For now, we can try building a simpler version where there's only one (hermes) agent that uses the research repo.
 
-Two preferences every optimizer records during onboarding:
+> docker in and of itself is not a requirement. Neither are images for now, though they may be nice eventually.
 
-- **Speed stance** — gate uploads on a quick static check, or ship straight to
-  eval? (The seed leans fast: the next eval is the test.)
-- **Autonomy dial** — where between propose-and-pause-everything and
-  monitored autonomy this optimizer currently sits. Widening the dial is the
-  human's call; see `docs/growth.md` for the steps.
-
----
-
-*(empty — recorded during onboarding and as stated)*
+Current authorization covers workspace setup and persistence testing. An autonomous research campaign has not started.
