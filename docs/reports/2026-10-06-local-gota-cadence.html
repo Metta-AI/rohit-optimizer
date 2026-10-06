@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local GOTA cadence iteration — 2026-10-06</title>
+<style>
+:root{--bg:#fffdf4;--surface:#fffaf0;--fg:#111827;--sub:#555;--muted:#777;--navy:#1a3875;--sage:#6e8050;--terra:#a44d35;--border:#e4dac8;--pale:#f8f6ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}.page{max-width:1000px;margin:auto;padding:36px 26px 64px}h1,h2{font-family:Georgia,serif}h1{font-size:2rem;line-height:1.2;margin:0 0 8px}h2{font-size:1.2rem;margin:32px 0 8px;color:var(--navy)}p{margin:0 0 12px}.meta{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:24px}.verdict{border-block:3px double var(--border);padding:16px 4px;margin-bottom:20px}.verdict strong{display:block;color:var(--terra);font:700 1.12rem/1.45 Georgia,serif;margin-bottom:5px}.small{color:var(--sub);font-size:.9rem}.caveat{border-left:4px solid var(--terra);background:#fbf2ec;padding:12px 16px;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:.9rem;margin:10px 0 16px}th{text-align:left;text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;color:var(--sub);border-bottom:2px solid var(--border);padding:8px}td{border-bottom:1px solid var(--border);padding:8px;font-variant-numeric:tabular-nums}td.n{text-align:right;font-family:ui-monospace,monospace}code{background:var(--pale);padding:1px 4px;border-radius:3px;overflow-wrap:anywhere;font-size:.85em}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.card{background:var(--surface);border:1px solid var(--border);padding:12px;border-radius:5px}.label{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.value{font-weight:650}.foot{border-top:1px solid var(--border);margin-top:32px;padding-top:12px;color:var(--muted);font-size:.78rem}
+</style>
+</head>
+<body><main class="page">
+<h1>Local GOTA cadence iteration</h1>
+<div class="meta">Baseline vs one cadence candidate · 2 local matches · 2026-10-06</div>
+<section class="verdict"><strong>The candidate runs cleanly, but neither match scored: the proposed gameplay benefit remains unproven.</strong><p class="small">Both arms reached <code>time_limit</code> at 28,909 ticks with score 0 in all ten seats. All VMs completed with exit code 0 and no BASIC errors. This verifies local integration, not competitive strength.</p></section>
+
+<h2>One hypothesized change</h2>
+<p>In <code>policy.bas</code>, change <code>nextThink = match.tick + 6</code> to <code>nextThink = match.tick + 3</code>. Hypothesis: more frequent decisions reduce delay before reacting to new observations, at the cost of more VM invocations. Baseline SHA-256 <code>044f61ada174e477b18562b4b806770545c82b4f1a20aaf65762b880f54424c1</code>; candidate SHA-256 <code>6e7b98669816511cdd0c1b27bf93e3c9471dc39266c5df8bfb120b308a3532da</code>.</p>
+
+<h2>Matched local setup</h2>
+<div class="grid">
+<div class="card"><div class="label">Game fixture</div><div class="value">Metta-AI/polyworld @ <code>150119c89b3535eb353af75c5bf5bc22b36e31f2</code></div></div>
+<div class="card"><div class="label">Configuration</div><div class="value">seed 2026 · max_ticks 28800 · waves 480 · headless_tick_rate 0</div></div>
+<div class="card"><div class="label">Seats</div><div class="value">10; candidate in slot 0, baseline in slots 1–9</div></div>
+<div class="card"><div class="label">Policy outputs</div><div class="value">Baseline: 10 baseline seats · Candidate: 1 changed + 9 baseline</div></div>
+</div>
+<p class="small">Both configs used local placeholders <code>local-seat-0</code>…<code>local-seat-9</code>, not credentials. Slot 0's descriptive label was the only JSON configuration difference; all settings, seed and opposing policies were held constant. No explicit map_preset or draft_mode fields were supplied.</p>
+<table><thead><tr><th>Arm</th><th>Config SHA-256</th><th>Seats SHA-256</th><th>Wall time</th></tr></thead><tbody>
+<tr><td>Baseline</td><td><code>9b6d3e77d9a670ea410e2c8163a42e055652a8bb80e7faafb7a2bb4627ccd140</code></td><td><code>60deb43503b52cdc047aa045d8f7fdb5fe62cbfe123135b8b61c9170b3444329</code></td><td>10.574 s</td></tr>
+<tr><td>Candidate</td><td><code>2465167ca3ff8cc0665b14279dca0cc463f5824e84e524f83d9168f7e60e7d0d</code></td><td><code>94d077257ec5ffe2bac760ffda120826379212cc1546e0af6247195f53d685aa</code></td><td>13.040 s</td></tr>
+</tbody></table>
+
+<h2>Per-seat outcomes</h2>
+<p>Scores were zero in both matches; XP is descriptive telemetry, not a strength metric.</p>
+<table><thead><tr><th>Slot</th><th>Team</th><th>Base score</th><th>Candidate score</th><th>Base XP</th><th>Candidate XP</th><th>XP Δ</th></tr></thead><tbody>
+<tr><td>0 · local</td><td>Red</td><td class="n">0</td><td class="n">0</td><td class="n">1664</td><td class="n">2468</td><td class="n">+804</td></tr>
+<tr><td>1</td><td>Red</td><td class="n">0</td><td class="n">0</td><td class="n">2290</td><td class="n">2469</td><td class="n">+179</td></tr>
+<tr><td>2</td><td>Red</td><td class="n">0</td><td class="n">0</td><td class="n">1692</td><td class="n">2408</td><td class="n">+716</td></tr>
+<tr><td>3</td><td>Red</td><td class="n">0</td><td class="n">0</td><td class="n">3510</td><td class="n">3484</td><td class="n">−26</td></tr>
+<tr><td>4</td><td>Red</td><td class="n">0</td><td class="n">0</td><td class="n">3236</td><td class="n">1928</td><td class="n">−1308</td></tr>
+<tr><td>5</td><td>Blue</td><td class="n">0</td><td class="n">0</td><td class="n">2410</td><td class="n">1931</td><td class="n">−479</td></tr>
+<tr><td>6</td><td>Blue</td><td class="n">0</td><td class="n">0</td><td class="n">2933</td><td class="n">3078</td><td class="n">+145</td></tr>
+<tr><td>7</td><td>Blue</td><td class="n">0</td><td class="n">0</td><td class="n">1843</td><td class="n">2416</td><td class="n">+573</td></tr>
+<tr><td>8</td><td>Blue</td><td class="n">0</td><td class="n">0</td><td class="n">3401</td><td class="n">2108</td><td class="n">−1293</td></tr>
+<tr><td>9</td><td>Blue</td><td class="n">0</td><td class="n">0</td><td class="n">2430</td><td class="n">4634</td><td class="n">+2204</td></tr>
+</tbody></table>
+
+<div class="caveat"><b>Small sample and interpretation</b><br>One match per arm, one seed. Both timed out and all scores were zero. The change to seat XP is not a reliable benefit signal. No formal score threshold was recorded, no response-latency metric was collected, and replay bodies were not decoded into action events; the mechanism remains unverified.</div>
+
+<h2>Functional checks and replay metadata</h2>
+<p>All 10 player logs in both arms showed start/completion, each was 49 bytes, and none contained <code>BASIC error:</code>. All player-status records were <code>exited / Completed / exit_code 0</code>. The evaluator detected the atomic results file then terminated the still-running game/server process.</p>
+<p>Baseline replay: 572,222 bytes, SHA-256 <code>b8d1c57985ef956ce70a1dbc756a9496649bc9c2ba3a69b5ad0dbfbc8d6601a8</code>. Candidate replay: 571,263 bytes, SHA-256 <code>215258c01992d34bcd46a741158394c17b9020327d5c27eb8266913e8d74216a</code>. Both headers identify <code>POLYWORLDREPLAY</code> and <code>gods_of_the_arena</code>, plus all ten player labels. Replay inspection here is metadata-only.</p>
+<p class="small">Raw evidence is under ignored <code>.runtime/gota-local/{baseline,candidate}/</code>. The runner is <code>games/gota/instruments/local_eval.py</code>, SHA-256 <code>baaf8f11e9c659f8728271ceb9b7d2d36249c950a694f2f88dd8f07598725ce9</code>.</p>
+
+<h2>Source commits and publication</h2>
+<p>Policy branch <code>agent/local-gota-20261006-762bc195</code>: baseline seed <code>369de10969855e323709eeedefc6f7ff33523c60</code>; candidate source <code>066d720bc086bce2a68e2057bcc37cc43a4d10d8</code>; final policy records <code>6e0706fe2a3357ca22cd8a16103f0daa5c5b205e</code>.</p>
+<p>The policy branch push was attempted using its configured HTTPS remote, but Git had no usable username credential and prompts were disabled. No credential was read or substituted; the local commits remain intact. No hosted operation was performed.</p>
+<footer class="foot">Research report · local integration evidence only · no competitive or champion claim.</footer>
+</main></body></html>
