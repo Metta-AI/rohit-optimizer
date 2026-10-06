@@ -8,10 +8,13 @@ Use the official uv installation guide if absent: https://docs.astral.sh/uv/gett
 ## Credentials
 
 The provisioning service supplies a revocable PLAYER credential as a private runtime file, and expected player ID.
-Run `uv run --frozen python skills/softmax-demo/scripts/configure_auth.py --token-file /run/secrets/softmax-player --player PLAYER_ID --config-dir /opt/data/softmax-auth`.
-Export `SOFTMAX_CONFIG_DIR=/opt/data/softmax-auth` for every command. Keep this directory outside both repositories.
+Run `uv run --frozen python skills/softmax-demo/scripts/configure_auth.py --token-file /run/secrets/softmax-player --player PLAYER_ID`.
+The published CLI stores credentials in `~/.softmax/credentials.yaml` with mode 0600. It does not support `SOFTMAX_CONFIG_DIR`.
+Use a dedicated runtime/OS account per player so this store is not shared across unrelated agents. Keep it outside both repositories.
 The helper verifies the principal before saving through softmax.auth. Never paste credentials into prompts or command arguments.
-GitHub: use the supported `gh`/Git credential helper with an authorized account, or a repository-scoped GitHub App token supplied by the provisioner.
+GitHub: use the supported `gh`/Git credential helper with an authorized account, a repository-scoped GitHub App token, or one SSH deploy key per repository supplied by the provisioner.
+For SSH deploy keys, use repository-specific host aliases and exact Git URL rewrites, with strict host-key checking.
+Private keys stay on the runtime; never place them in the distribution.
 The agent needs read/write on its research and policy repositories, and read access to Polyworld source/assets for native replay inspection.
 No credentials are bundled with the distribution. Missing access is a setup failure, not permission to borrow a broader token.
 
