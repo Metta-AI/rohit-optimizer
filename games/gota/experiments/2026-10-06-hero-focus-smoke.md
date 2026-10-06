@@ -1,6 +1,6 @@
 # GOTA iteration record — 2026-10-06
 
-Status: discovery complete, one inert baseline upload done; evaluation is blocked by access boundary before any experience request. Upload completed from source-matched baseline `policy.bas` at original policy commit `eab20515724dc0ea63ce13551333a155c81f7ce3`. Candidate difference prepared but not uploaded. No hosted episodes were submitted, so there are no request, episode, or replay IDs. Scoped player’s roster-resolution/player-list query returned HTTP 403; no stronger credential, league submission, or permission bypass will be used.
+Status: discovery, both policy uploads, and candidate source commit are complete. Baseline XP create was attempted twice using identical saved body/key; both were denied HTTP 403. No XP request/episode/replay was created. Candidate has not been evaluated.
 
 ## Authorized scope
 
@@ -29,10 +29,11 @@ Adversarial critique: one episode has negligible statistical power; opponents/ro
 
 ## External-operation checkpoint ledger
 
-- Discovery: live CLI identity confirmed for expected player; league/release/schema/leaderboard read. No uploads or experience requests yet.
-- Baseline upload: pending.
-- Baseline experience request: pending; no key/request ID yet.
-- Candidate upload: pending.
-- Candidate experience request: pending; no key/request ID yet.
-- Replay retrieval and inspection: pending.
-- Git push: pending.
+- Discovery: live identity, league/release/schema/leaderboard read.
+- Baseline upload: complete, `hermes-gota-iteration:v1` (source commit `eab20515724dc0ea63ce13551333a155c81f7ce3`).
+- Candidate upload: complete, `hermes-gota-iteration:v2` (source commit `856984c58692163e23ee7aa5826a2b180742b3bb`; +60→+100 only).
+- Baseline experience request: denied twice, same persisted request key `hermes-gota-20261006-baseline-58cce3a6-ff1a-436b-9a4d-99c3e6da513b`; platform operation IDs `5dc12f0d-41cd-4a8a-9391-ce2d3278e9e8` and `6846aa8d-1516-412c-8615-633d8a807312`; no xreq/episode IDs.
+- Candidate experience request: not attempted.
+- Replay retrieval/inspection and performance verdict: pending, because neither evaluation request created.
+- Git pushes: policy and research records pushed to branch `agent/hermes-gota-20261006`.
+

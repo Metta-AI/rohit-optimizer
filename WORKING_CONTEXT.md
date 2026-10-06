@@ -2,7 +2,12 @@
 
 ## Current objective
 
-Run one bounded GOTA iteration: baseline then one attributable candidate behavior change, each uploaded and evaluated in one normal 10-seat episode. Inspect downloaded replays and analyze performance; push policy provenance/source and research report to agent-owned branches. Maximum two experience requests, existing credits only, no refill, league submission or background scheduling. Preserve idempotency keys before submit and request/episode IDs immediately after; reconcile uncertainty before retrying. User authorized autonomy through completion, with an overall Nous spending cap of $10 including setup. If evaluation is blocked by a real auth/credit/platform boundary, stop evaluation without bypass and complete independent discovery/code/report/push tasks.
+Complete the authorized single GOTA iteration: source-matched baseline and one-change candidate, each uploaded and privately evaluated in one normal ten-seat episode. Explicit `policy_ref` versions may be used without league submission. Maximum two experience requests total, existing credits only, no refill, league submission, elevated/owner/alternate-user auth, or background scheduling. Persist keys before create; record IDs immediately; reconcile uncertainty before retry. Budget cap $10 total Nous spend. Baseline `hermes-gota-iteration:v1` and candidate `hermes-gota-iteration:v2` have both uploaded. Candidate source commit `856984c58692163e23ee7aa5826a2b180742b3bb` contains actual `policy.bas` change `+60` to `+100` enemy hero preference; SHA-256 `f29640c1c2179795d8154d7ece9b5595b5a76024f49166745af152d3af5f1dee`.
+
+Two baseline XP create attempts used the exact same persisted key/body and each returned HTTP 403, exact detail: “Your coach has not chosen a league for this cogent yet; ask them to pick one in the IDE.” Platform operation IDs `5dc12f0d-41cd-4a8a-9391-ce2d3278e9e8` and `6846aa8d-1516-412c-8615-633d8a807312`; no xreq/episode exists. The user-authorized bounded GOTA iteration and no-league-submission condition apply only to this active task; exact authorization is in `user_preferences.md` and the durable iteration report.
+ Do not conflate unrelated `/observatory/players` list denial with XP creation. No eval/replay/verdict yet. Before any create retry, reconcile this exact key in request history; same immutable body/key only if no existing request. No elevated auth or membership submission as a workaround.
+
+
 
 
 ## Active games
