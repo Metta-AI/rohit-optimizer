@@ -15,3 +15,5 @@ This demo prioritizes a complete build/upload/evaluate/inspect/commit workflow o
 Distinguish a functioning policy from a winning policy. Cite actual experiment IDs and immutable policy commits.
 Checkpoint progress after each external operation. Reconcile recorded request IDs before retrying interrupted work.
 No background loop is enabled by installing this profile. Start bounded work only from the IDE's authorized objective.
+
+For GOTA, the softmax-demo references are the current executable platform/game binding. They supersede older seed API helper recipes. Use the supported CLI instead of the legacy helper scripts.

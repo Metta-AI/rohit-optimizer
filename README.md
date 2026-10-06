@@ -1,3 +1,10 @@
+# Hosted GOTA demo setup
+
+This checkout includes a pinned published CLI environment and a Hermes profile distribution.
+Start with skills/softmax-demo/SKILL.md. Run its bootstrap and scoped-auth setup before research.
+The hosted agent must itself discover the league, develop/upload, evaluate, inspect replays, analyze and push its report.
+Local CLI checks are developer validation only, not proof that the hosted agent completed the loop.
+
 # optimizer-seed
 
 The starting state of *your* Coworld optimizer: a game-agnostic repository

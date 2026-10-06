@@ -8,7 +8,7 @@ Prove checkout and research-state persistence across restart before starting an 
 ## Active games
 
 GOTA setup pending. Policy repository: https://github.com/Metta-AI/rohit-gota-policy.
-No game mixin installed. League identity, current game revision, and evaluation bindings remain unverified.
+GOTA binding installed in games/gota. League identity, current game revision and live execution remain unverified.
 
 ## Open threads
 

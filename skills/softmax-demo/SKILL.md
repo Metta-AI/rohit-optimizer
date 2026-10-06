@@ -5,6 +5,21 @@ description: Run or resume the IDE-driven GOTA policy-development demo with sepa
 
 # IDE-driven GOTA demo
 
+## Required references
+
+Read references/platform.md for executable CLI/auth/evidence recipes, references/gota-guide.md for game mechanics,
+and references/gota-analysis.md for strategy and source-matched replay analysis. references/gota-upstream-tools.md
+contains native tool setup; its large tournament examples are reference only, not authorized demo commands.
+These current CLI recipes supersede the seed's dated eval_request.py/fetch_artifacts.py/lifecycle.py API wrappers.
+
+## Ground-zero bootstrap
+
+Run this installed skill's `scripts/bootstrap.sh` after the provisioner supplies Git authentication and uv.
+It creates separate workspace checkouts and installs the locked Python 3.12 runtime. It preserves existing checkouts.
+Set SOFTMAX_RESEARCH_DIR/SOFTMAX_POLICY_DIR to override locations. The demo research ref defaults to the review branch;
+set SOFTMAX_RESEARCH_REF to the reviewed release branch when promoted. Record the printed revisions.
+Then configure the mounted PLAYER token with scripts/configure_auth.py, per references/platform.md.
+
 ## Setup and resume
 
 1. Resolve the research and policy directories as described in SOUL.md. Verify their Git origins and revisions.
