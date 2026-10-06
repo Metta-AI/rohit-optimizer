@@ -17,6 +17,9 @@ For SSH deploy keys, use repository-specific host aliases and exact Git URL rewr
 Private keys stay on the runtime; never place them in the distribution.
 The agent needs read/write on its research and policy repositories, and read access to Polyworld source/assets for native replay inspection.
 No credentials are bundled with the distribution. Missing access is a setup failure, not permission to borrow a broader token.
+The coach must choose Gods of the Arena in the player IDE Controls and authorize practice with a bounded credit allowance.
+A valid PLAYER token alone does not override these controls. If XP creation says the coach has not chosen a league, report that precise IDE setting; do not request an owner token or submit a policy to the league.
+The researcher does not change its own coach controls or credit allowance.
 
 ## Discovery and standings
 
