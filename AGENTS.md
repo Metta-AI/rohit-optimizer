@@ -52,7 +52,7 @@ that taught it. Do not delete them; if one seems wrong, raise it with the human.
    was a loss at n=30; a p=0.20 at n=240 resolved to p<1e-9 at n≈955.*
 
 5. **Exactly one irreversible act — and it gets the only gate.** Uploading a
-   version is inert, free, and ungated. League **submission** is public,
+   version enters no competition and is ungated. League **submission** is public,
    champion-making, and effectively irreversible: it requires the human's
    explicit go-ahead, every time. (The only other irreversible act is
    destroying data. Care concentrates on these two; speed everywhere else.)
@@ -93,15 +93,15 @@ campaign usually enters at 2.
 | 9 | **Record** | Close the experiment record with its verdict; dead levers to `closed_levers.md`; buffer session lessons. Loop to 2 (or 1 if the field may have moved). | records |
 | 10 | **Submit — the gate** | Only when demonstrably better, only with explicit human go-ahead. Decision record; then monitor qualification. | `submit` |
 
-Steps 1–3 and 6–8 are cheap and fast by design — no gates, streaming, free
+Steps 1–3 and 6–8 are cheap and fast by design — no gates, streaming, routine
 uploads. Rigor concentrates at steps 5 (falsifiable hypotheses) and 10 (the
 irreversible act).
 
 ## Gates and irreversibles
 
-- **Upload** = register a new policy version. Inert: enters no competition,
-  costs nothing but an eval round if broken. Do it freely, per the human's
-  recorded speed stance. The mandatory cost is the version log row.
+- **Upload** = register a new policy version. It does not itself enter a league. Use the human's recorded speed stance
+  within current service quotas, pricing, and the agreed budget.
+  The mandatory record is the version log row.
 - **Submit** = enter a league. Public, likely champion-making, effectively
   irreversible. Explicit human go-ahead required, recorded in the submission's
   decision record. No skill other than `submit` may do this.
