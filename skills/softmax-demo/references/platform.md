@@ -70,7 +70,10 @@ uv run --frozen coworld xp-request download XREQ_ID --include replay --include r
 The current API supports idempotency_key. Generate one per immutable request body and persist both BEFORE submission.
 On a lost response, reuse the identical body and key; never issue a replacement key for the same intended experiment.
 Persist the returned request ID immediately. If the deployed server rejects this contract, stop and report it.
-A 401/403 is an identity/permission failure; 402 is exhausted credit. Do not grant credits, change budgets, or switch to owner credentials.
+Inspect the full response detail before classifying a failure. A 401 is authentication failure; a 403 can be a coach control or pending permit; 402 is exhausted credit.
+For a 403 detail with `type=permit_required`, XP creation has already placed its spend ask in the coach IDE inbox. Return that ask to the coach, wait for approval, then retry the identical request body/key. Do not create duplicate asks or auto-approve your own permit.
+A coach league-selection error is different from league membership. Report the specific control to fix. Do not infer upload denial from a successful upload followed by a denied account-list route.
+Do not grant credits, change budgets, or switch to owner credentials. HTTP trace/request IDs identify a failed API call; they are not `xreq_` experience-request IDs or evidence that an episode exists.
 Inspect downloaded manifests for availability and errors. Never interpret a failed episode as a policy loss.
 Use `coworld episodes --help` for inspection subcommands and `coworld replay-open --help` for hosted viewer links.
 
