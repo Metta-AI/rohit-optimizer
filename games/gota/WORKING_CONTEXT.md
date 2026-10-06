@@ -1,3 +1,3 @@
 # GOTA working context
 
-Objective: complete a single bounded local baseline/candidate iteration with the supplied executable GOTA fixture, using the current provisioned objective and policy repository. Local game source: Metta-AI/polyworld commit 150119c89b3535eb353af75c5bf5bc22b36e31f2. Maximum two normal ten-seat matches; no hosted actions. Record exact configuration, source hashes, honest functional results, and pushed commits.
+Objective: one bounded local GOTA baseline/candidate iteration using the supplied executable fixture, source commit 150119c89b3535eb353af75c5bf5bc22b36e31f2. Completed with two normal ten-seat matches, exact config/source hashes, log and replay-metadata inspection, and local functional-only findings. Policy and research branches are pushed and verified. No hosted actions; stop here.

@@ -10,7 +10,7 @@ GOTA local iteration only. Policy repository: https://github.com/djbhindi/softma
 
 ## Open threads
 
-Finish the authorized baseline/candidate local comparison and publish the policy and research report on their dedicated agent branches. Stop after this one iteration; local evidence is functional/behavioral only, not a hosted strength or champion claim.
+This single local-only iteration is complete. Policy and research branches were pushed and the remote refs verified; no additional matches or hosted activity are in scope.
 
 ## Identity
 
