@@ -43,12 +43,15 @@ Use the source matching that release, not an unverified main-branch baseline.
 uv run --frozen coworld upload-policy --file /absolute/policy.bas --name POLICY_NAME --title "Baseline smoke" --description "Pinned GOTA baseline; functional validation only"
 ```
 
-Read command help for accepted flags. Save output and policy version ID immediately. Hash the source bytes and record the source commit.
+Read command help for accepted flags. Save output and policy version ID immediately. The CLI may return only a version label such as `name:v1`; that label is a valid explicit `policy_ref`. Hash the source bytes and record the source commit.
 No Docker image is needed for a BASIC file policy. A successful upload does not prove the policy executes.
 
 ## Bounded evaluation
 
 Use `coworld xp-request create --help` and the live V2CreateExperienceRequestRequest schema to construct a valid JSON body.
+An explicit `policy_ref` resolves an uploaded policy version directly; your own policy does not need league membership or public submission for a private experiment.
+Account-level player listing is not a prerequisite. A 403 from that unrelated route does not establish that upload or XP creation is denied.
+Attempt the authorized experiment through its actual endpoint, and report that endpoint's response. Distinguish observed failures from inferred prerequisites.
 Prefer the live league's documented roster/configuration; freeze opponent policy version IDs and slot assignments.
 For the first iteration, run one baseline smoke and one candidate smoke, one episode each, serially, once the operator confirms the run budget. Do not expand automatically.
 Write the hypothesis before modifying one policy behavior. Preserve all ten seats and normal game limits.
