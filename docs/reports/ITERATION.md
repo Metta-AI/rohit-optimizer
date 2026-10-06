@@ -16,10 +16,10 @@ Status: discovery and one inert baseline upload complete. No hosted episode was 
 
 ## Upload and auth blocker
 
-- Uploaded `hermes-gota-iteration:v1`, unmodified baseline `policy.bas`; CLI response was `Upload complete: hermes-gota-iteration:v1`. Upload command output did not return a version UUID. Baseline source commit is `eab20515724dc0ea63ce13551333a155c81f7ce3`; its SHA matches the hosted reference exactly.
+- Uploaded `hermes-gota-iteration:v1`, unmodified baseline `policy.bas`; CLI response was `Upload complete: hermes-gota-iteration:v1`. Upload command output did not return a version UUID. Baseline source commit is `eab20515724dc0ea63ce13551333a155c81f7ce3`; its SHA matches the hosted reference exactly. Provenance row recorded in policy repo.
 - `coworld memberships --mine` for uploaded `hermes-gota-iteration:v1` returned no league membership. GOTA policy not submitted (submission not authorized).
-- `coworld xp-request list --mine` succeeded and was empty before eval. Roster-resolution or player-list APIs were attempted only as read calls; `/observatory/players` is explicitly denied for this credential with HTTP 403 (request IDs `8c923c78-3756-4175-ae72-167568534029`, `0ea2cca1-c290-450b-a367-51385a69cc44`).
-- Current CLI help and live manifest establish experience requests need explicit `policy_ref` seats in a ten-player roster. CLI auth principal is the intended scoped PLAYER. No policy-membership creation route is available on the PLAYER auth: membership/submission management is forbidden to it. The normal create path must not be bypassed by using a user/owner credential, changing identities, or promoting the policy to the competition.
+- `coworld xp-request list --mine` succeeded and was empty before eval. Read-only `/observatory/players`/`coworld player list` returned HTTP 403, with request IDs `8c923c78-3756-4175-ae72-167568534029` and `0ea2cca1-c290-450b-a367-51385a69cc44`. The failure is specifically on a player-list route; no XP request POST was attempted, and we cannot claim the XP create endpoint itself was tested or denied.
+- Current CLI help and live manifest establish experience requests need explicit `policy_ref` seats in a ten-player roster. Membership for the uploaded policy was not present in the available active-only list, and account policy identities cannot be enumerated with this credential. Do not use a broader credential, change identities, or promote the policy into the league as a workaround.
 - One preserved baseline request template and key (not submitted): `gota-baseline-request.json`, idempotency key `hermes-gota-20261006-baseline-58cce3a6-ff1a-436b-9a4d-99c3e6da513b`.
 - Candidate request template/key also preserved but not submitted: `gota-candidate-request.json`, key `hermes-gota-20261006-candidate-9b899046-78cb-47b4-a1b6-bed2fefeda9d`. It references `hermes-gota-iteration:v2`, which was not uploaded. Neither key has been transmitted; these scratch bodies can be regenerated if setup resumes.
 
@@ -29,6 +29,8 @@ Candidate is one score-weight change at `policy.bas` line 201: visible enemy-her
 
 ## Pending
 
-- No experience-request POST executed; no request or episode IDs; no replay to inspect; no performance verdict.
-- Need an authorized GOTA competition membership for `hermes-gota-iteration` in the stated division (without league submission by this agent) or explicit platform grant of the minimal create/experiment permission to the PLAYER identity.
-- Next action only after authorized identity/membership is available: verify visibility/readback, upload one-change `v2`, persist exact idempotent request key/body before POST, submit only after baseline has valid roster eligibility, immediately log returned request/episode IDs, run both episodes serially under existing credits, retrieve/inspect actual replay events, and close hypothesis record.
+- The scoped player's read-only account/policy lookup via `/observatory/players` and `coworld player list` returned HTTP 403 (request IDs `8c923c78-3756-4175-ae72-167568534029`, `0ea2cca1-c290-450b-a367-51385a69cc44`). No XP request POST was attempted, so the request-create endpoint's authorization response is unknown.
+- No experience-request POST was executed; there are no request IDs, episode IDs, replays, or performance verdicts.
+- A functional one-change candidate is present in the pushed policy commit, but its upload and hosted evaluation are not verified. There is no hypothesis verdict beyond inconclusive due to missing data.
+- The leaderboard supplies current context, not evidence about this candidate. A single run each (if later resumed under the authorization) is only directional and would not establish competitive strength.
+

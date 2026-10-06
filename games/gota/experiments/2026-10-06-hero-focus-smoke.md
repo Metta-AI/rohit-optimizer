@@ -1,6 +1,6 @@
 # GOTA iteration record — 2026-10-06
 
-Status: discovery complete; pre-registration prepared; uploads/evaluations not yet attempted.
+Status: discovery complete, one inert baseline upload done; evaluation is blocked by access boundary before any experience request. Upload completed from source-matched baseline `policy.bas` at original policy commit `eab20515724dc0ea63ce13551333a155c81f7ce3`. Candidate difference prepared but not uploaded. No hosted episodes were submitted, so there are no request, episode, or replay IDs. Scoped player’s roster-resolution/player-list query returned HTTP 403; no stronger credential, league submission, or permission bypass will be used.
 
 ## Authorized scope
 
