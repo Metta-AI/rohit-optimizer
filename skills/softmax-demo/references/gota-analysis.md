@@ -18,15 +18,25 @@ Build prerequisites: Git/LFS, C compiler, libcurl, Nim >=2.2.10, Nimby, Polyworl
 Follow the official runbook's dependency installation and build steps, but NEVER run its 1000-game tournament example.
 Compile against the exact game source revision that produced the replay. A mismatched decoder must fail visibly.
 
-The standalone full-tick verifier is examples/gods_of_the_arena/tools/replay_extractor.nim.
-Build it with the same installed Polyworld dependency environment:
+Never dump the standalone replay_extractor's default output: it prints every object on every tick.
+It can exceed the entire hosted disk. A larger disk does not fix that failure.
+Use the upstream `inspect_players REPLAY METADATA OUTPUT_JSON` for compact verified counters;
+build with `-d:replayEvents` against the exact source revision. Follow the metadata contract in
+upstream herostats.nim; do not invent fields. Quiet replay_extractor verifies hashes only.
+Run every compiler and replay tool through this skill's `scripts/bounded_run.py`:
 
-    nim c -d:release -o:tmp/gota/replay_extractor examples/gods_of_the_arena/tools/replay_extractor.nim
-    tmp/gota/replay_extractor /absolute/match.replay --quiet
-    tmp/gota/replay_extractor /absolute/match.replay > /absolute/replay-events.txt
+```sh
+python3 "$SKILL/scripts/bounded_run.py" --state-dir "$RESEARCH/.runtime/operations" \
+  --key baseline-replay --retry-safe --seconds 120 --output-mib 8 --file-mib 64 \
+  -- /absolute/inspect_players /absolute/baseline.replay /absolute/metadata.json /absolute/stats.json
+```
 
-The quiet mode verifies hashes/actions but is not behavioral analysis. Inspect event output or use inspect_players
-from the official tools build to quantify deaths, hero kills, lane last hits, tower kills and team outcomes.
+Use a distinct key per input hash and tool revision. At most two attempts per local operation.
+The runner records timeout/output/disk/failure states; never treat partial output as a valid replay.
+Keep compilation single-threaded (`--parallelBuild:1`). Inspect selected event intervals, not a full state dump.
+On a resource failure, retain original replays, source, credentials and records. Remove only reproducible
+build/cache outputs identified by the operation record; do not clear the instance or another workspace.
+
 For at least one decisive interval, explain what the policy did, the observed consequence, and evidence supporting the next change.
 If native dependencies cannot run, use Hermes browser tools with the hosted viewer and cite timestamps/ticks actually inspected.
 If neither viewer nor decoder works, stop at a replay-analysis failure; do not substitute a guessed narrative from final scores.

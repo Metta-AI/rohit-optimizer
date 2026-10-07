@@ -1,0 +1,25 @@
+# Operator-owned credentials/provider selection are supplied by provisioning.
+# Config is installed on a fresh profile and preserved by Hermes on update.
+approvals:
+  mode: smart
+  timeout: 30
+  cron_mode: deny
+  single_query_mode: deny
+  unattended_mode: deny
+  smart_policy: >-
+    This is an isolated GOTA research instance. Approve routine workspace editing,
+    builds, tests, official development-tool installation, bounded replay inspection,
+    existing scoped Softmax API access, and normal pushes to the configured research
+    and policy repositories. Honor the recorded task limits and server-side daily
+    budget. Escalate new credentials, security changes, destructive actions outside
+    reproducible caches, force pushes, public sharing, league submissions, unrelated
+    infrastructure operations, and budget increases. Never disclose credentials.
+auxiliary:
+  approval:
+    provider: nous
+    model: anthropic/claude-haiku-4.5
+    reasoning_effort: none
+    timeout: 20
+security:
+  redact_secrets: true
+  tirith_enabled: true
