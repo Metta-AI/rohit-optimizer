@@ -1,0 +1,55 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "35eccc26-828a-43be-a238-ce778e413846:replay:None",
+      "encoding": "identity",
+      "episode_request_id": "ereq_385ae031-a7ea-40a9-a384-dd0cb0f453c6",
+      "filename": "replay.replay",
+      "http_status": null,
+      "kind": "artifact",
+      "sha256": "17270f4a69342479e43f88d6ad055dbd8c14601c1c6c41b7110fdb4c01c7abc3",
+      "size": 2069189,
+      "state": "completed",
+      "version": "ac69e7da20f40076a8713b5bf09d1a164fa23beff86638da74caa54af02b8340"
+    },
+    {
+      "artifact_id": "35eccc26-828a-43be-a238-ce778e413846:results:None",
+      "encoding": "identity",
+      "episode_request_id": "ereq_385ae031-a7ea-40a9-a384-dd0cb0f453c6",
+      "filename": "results.json",
+      "http_status": null,
+      "kind": "artifact",
+      "sha256": "7527c11c9c6eea5b4c419c3b2793ad1833854c3790cbd903fc0e7fe184c967fe",
+      "size": 175,
+      "state": "completed",
+      "version": "9421a7a17afe1fdfbeb2c7167873e4d2ccc81920dba33caec1d66cf7a1a7d205"
+    },
+    {
+      "artifact_id": "e8568e8d-c93f-4c22-af15-94721a5ffade:replay:None",
+      "encoding": "identity",
+      "episode_request_id": "ereq_19048656-ae8c-4793-8b71-fc17554719e4",
+      "filename": "replay.replay",
+      "http_status": null,
+      "kind": "artifact",
+      "sha256": "bc1938b6ecf37f27ab75488e37753c9dd305a380a076cbe2ad244b9b007fc239",
+      "size": 2247877,
+      "state": "completed",
+      "version": "077de4c5ca73295cc60a9c8a6c156eb3a089a9825c425205f875fc86f3ec3bfe"
+    },
+    {
+      "artifact_id": "e8568e8d-c93f-4c22-af15-94721a5ffade:results:None",
+      "encoding": "identity",
+      "episode_request_id": "ereq_19048656-ae8c-4793-8b71-fc17554719e4",
+      "filename": "results.json",
+      "http_status": null,
+      "kind": "artifact",
+      "sha256": "4dc98c8d120e18eadc082b9edef9919fed2117ede5e56cf7fbbad098a5b4821d",
+      "size": 175,
+      "state": "completed",
+      "version": "f9f03e74f821a15a6fadd1c537491a150fb37084ec595349b3938d1649de59ae"
+    }
+  ],
+  "coworld_version": "2026.10.6.1",
+  "schema": "gota-evidence-manifest/v1",
+  "source_commit": "5287c437fe5e4ae7a1fc56df3fa40f6821a7d5fd"
+}

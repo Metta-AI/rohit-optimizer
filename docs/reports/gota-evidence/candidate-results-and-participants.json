@@ -1,0 +1,255 @@
+{
+  "entries": [
+    {
+      "created_at": "2026-10-06T23:01:00.508813Z",
+      "error": null,
+      "error_type": null,
+      "evidence_state": "sealed",
+      "experience_request_id": "xreq_5c2a0c44-f187-4064-9c50-23154038c4c2",
+      "id": "ereq_385ae031-a7ea-40a9-a384-dd0cb0f453c6",
+      "participant_scores": [
+        {
+          "position": 0,
+          "score": 0.0
+        },
+        {
+          "position": 1,
+          "score": 0.0
+        },
+        {
+          "position": 2,
+          "score": 0.0
+        },
+        {
+          "position": 3,
+          "score": 0.0
+        },
+        {
+          "position": 4,
+          "score": 0.0
+        },
+        {
+          "position": 5,
+          "score": 0.0
+        },
+        {
+          "position": 6,
+          "score": 0.0
+        },
+        {
+          "position": 7,
+          "score": 0.0
+        },
+        {
+          "position": 8,
+          "score": 0.0
+        },
+        {
+          "position": 9,
+          "score": 0.0
+        }
+      ],
+      "participants": [
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "hermes-gota-iteration:v2",
+          "owner_name": "Rohit M",
+          "player_id": "ply_305f0175-65a2-47ca-9566-69991871b743",
+          "player_name": "Rohit Mukherjee",
+          "policy_id": "b247306c-c7d0-4c49-930b-e224d1444958",
+          "policy_name": "hermes-gota-iteration",
+          "policy_version_id": "a93a31e0-c047-4e3f-8624-f4bdeeef901f",
+          "position": 0,
+          "version": 2
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "BeWellBot-Arena:v58",
+          "owner_name": "David B",
+          "player_id": "ply_2c897a35-6553-40e8-ad91-6900d9254646",
+          "player_name": "BeWellBot",
+          "policy_id": "fbd851b6-7c90-49a2-a881-1ea992a9d39c",
+          "policy_name": "BeWellBot-Arena",
+          "policy_version_id": "c5d658bf-9ab2-4a71-93c1-d1bd0e9104ca",
+          "position": 1,
+          "version": 58
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "richard-gods-of-the-arena:v340",
+          "owner_name": "Richard H",
+          "player_id": "ply_ded11f40-3e30-4921-b019-f7f6bc3e9c83",
+          "player_name": "richard",
+          "policy_id": "cfced003-7272-4a82-9abf-3775963e9f06",
+          "policy_name": "richard-gods-of-the-arena",
+          "policy_version_id": "8bf344e5-c1b5-4b9b-94c5-b9f7437998b3",
+          "position": 2,
+          "version": 340
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "khors:v231",
+          "owner_name": "Andre H",
+          "player_id": "ply_3d22435e-30a2-4f2a-b037-a5c249583788",
+          "player_name": "Andre von Auto",
+          "policy_id": "fe2118ce-4bc8-4624-a8c7-1c68366e3f64",
+          "policy_name": "khors",
+          "policy_version_id": "84f16c45-423d-48df-890c-d38defefb7b7",
+          "position": 3,
+          "version": 231
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "neuralhub-91708d976414ab4f:v1",
+          "owner_name": "cognito053",
+          "player_id": "ply_bda99625-fe79-4ae3-a24a-4dd9902ea8da",
+          "player_name": "cognito053",
+          "policy_id": "3d37f77e-fa08-499c-831f-a9219188542c",
+          "policy_name": "neuralhub-91708d976414ab4f",
+          "policy_version_id": "d00300f7-830e-4c8b-9d59-9c78b7d334a1",
+          "position": 4,
+          "version": 1
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "fly_brain:v1",
+          "owner_name": "Andre H",
+          "player_id": "ply_607f17a2-3acf-405b-91fe-d12ef1001c00",
+          "player_name": "Andre von Houck",
+          "policy_id": "0374e791-aa8d-446e-9940-a68d38730f0e",
+          "policy_name": "fly_brain",
+          "policy_version_id": "07215b0c-0ad8-4ea5-96a7-fc90e21d4a08",
+          "position": 5,
+          "version": 1
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "relh-gods-of-the-arena:v386",
+          "owner_name": "Richard H",
+          "player_id": "ply_18302115-9fc9-482d-a2f3-f4c592bf9e57",
+          "player_name": "relh",
+          "policy_id": "8d33a211-f297-4de1-bdcc-5a3aaba6c17e",
+          "policy_name": "relh-gods-of-the-arena",
+          "policy_version_id": "1b3cc1e3-b03c-4d5c-96e1-c59d33267a9a",
+          "position": 6,
+          "version": 386
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "neuralhub-ab8eb2ecc5e2ff38:v1",
+          "owner_name": "ygo373802",
+          "player_id": "ply_cf90e82d-803d-4983-89b4-1a539e707088",
+          "player_name": "ygo373802",
+          "policy_id": "fb0507b5-fc83-44a4-914f-fca8f9d56b49",
+          "policy_name": "neuralhub-ab8eb2ecc5e2ff38",
+          "policy_version_id": "a56071c3-61ea-4729-9553-70e34b38b2e6",
+          "position": 7,
+          "version": 1
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "neuralhub-476ceffbbecfc1e5:v1",
+          "owner_name": "sharonko",
+          "player_id": "ply_59209950-997d-4a6e-aabb-6c55e65d3ff5",
+          "player_name": "sharon",
+          "policy_id": "1072007e-687d-42a6-b4e8-8e7bd5f11226",
+          "policy_name": "neuralhub-476ceffbbecfc1e5",
+          "policy_version_id": "a61827ac-9cd3-4592-a775-1e502a7507ef",
+          "position": 8,
+          "version": 1
+        },
+        {
+          "is_filler": false,
+          "is_seed": false,
+          "kind": "policy",
+          "label": "neuralhub-7233957d344541d0:v1",
+          "owner_name": "Cayden C",
+          "player_id": "ply_2efb03c1-b9ca-468d-a86a-7afd76865cfa",
+          "player_name": "Cayden Ching",
+          "policy_id": "df038b69-b4db-4bd4-823e-7e4ad611d245",
+          "policy_name": "neuralhub-7233957d344541d0",
+          "policy_version_id": "3c69f8d6-eae8-4f63-b628-29455e75ad4d",
+          "position": 9,
+          "version": 1
+        }
+      ],
+      "policy_version_ids": [
+        "a93a31e0-c047-4e3f-8624-f4bdeeef901f",
+        "c5d658bf-9ab2-4a71-93c1-d1bd0e9104ca",
+        "8bf344e5-c1b5-4b9b-94c5-b9f7437998b3",
+        "84f16c45-423d-48df-890c-d38defefb7b7",
+        "d00300f7-830e-4c8b-9d59-9c78b7d334a1",
+        "07215b0c-0ad8-4ea5-96a7-fc90e21d4a08",
+        "1b3cc1e3-b03c-4d5c-96e1-c59d33267a9a",
+        "a56071c3-61ea-4729-9553-70e34b38b2e6",
+        "a61827ac-9cd3-4592-a775-1e502a7507ef",
+        "3c69f8d6-eae8-4f63-b628-29455e75ad4d"
+      ],
+      "replay_url": "https://softmax-public.s3.amazonaws.com/replays/35eccc26-828a-43be-a238-ce778e413846.replay",
+      "scores": [
+        {
+          "policy_version_id": "a93a31e0-c047-4e3f-8624-f4bdeeef901f",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "c5d658bf-9ab2-4a71-93c1-d1bd0e9104ca",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "8bf344e5-c1b5-4b9b-94c5-b9f7437998b3",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "84f16c45-423d-48df-890c-d38defefb7b7",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "d00300f7-830e-4c8b-9d59-9c78b7d334a1",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "07215b0c-0ad8-4ea5-96a7-fc90e21d4a08",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "1b3cc1e3-b03c-4d5c-96e1-c59d33267a9a",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "a56071c3-61ea-4729-9553-70e34b38b2e6",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "a61827ac-9cd3-4592-a775-1e502a7507ef",
+          "score": 0.0
+        },
+        {
+          "policy_version_id": "3c69f8d6-eae8-4f63-b628-29455e75ad4d",
+          "score": 0.0
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "next_cursor": null,
+  "observed_at": "2026-10-07T00:10:20.130568Z",
+  "unavailable_ids": []
+}

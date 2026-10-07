@@ -1,0 +1,79 @@
+{
+  "idempotency_key": "hermes-gota-20261006-baseline-58cce3a6-ff1a-436b-9a4d-99c3e6da513b",
+  "private": true,
+  "episode_player_llm_spend_limit_usd": 0,
+  "target": {
+    "division_id": "div_a4534073-c5d2-4193-a94a-93d9c5e2e443"
+  },
+  "game_config_overrides": {
+    "seed": 2026,
+    "max_ticks": 28800,
+    "draft_mode": "open"
+  },
+  "roster": [
+    {
+      "slot": 0,
+      "player": {
+        "policy_ref": "hermes-gota-iteration:v1"
+      }
+    },
+    {
+      "slot": 1,
+      "player": {
+        "policy_ref": "BeWellBot-Arena:v58"
+      }
+    },
+    {
+      "slot": 2,
+      "player": {
+        "policy_ref": "richard-gods-of-the-arena:v340"
+      }
+    },
+    {
+      "slot": 3,
+      "player": {
+        "policy_ref": "khors:v231"
+      }
+    },
+    {
+      "slot": 4,
+      "player": {
+        "policy_ref": "neuralhub-91708d976414ab4f:v1"
+      }
+    },
+    {
+      "slot": 5,
+      "player": {
+        "policy_ref": "fly_brain:v1"
+      }
+    },
+    {
+      "slot": 6,
+      "player": {
+        "policy_ref": "relh-gods-of-the-arena:v386"
+      }
+    },
+    {
+      "slot": 7,
+      "player": {
+        "policy_ref": "neuralhub-ab8eb2ecc5e2ff38:v1"
+      }
+    },
+    {
+      "slot": 8,
+      "player": {
+        "policy_ref": "neuralhub-476ceffbbecfc1e5:v1"
+      }
+    },
+    {
+      "slot": 9,
+      "player": {
+        "policy_ref": "neuralhub-7233957d344541d0:v1"
+      }
+    }
+  ],
+  "num_episodes": 1,
+  "title": "GOTA baseline fixed-roster smoke",
+  "description": "One normal ten-seat episode. Fixed opponent versions, slot assignments, release, and seed; baseline versus one candidate behavior change. Functional and directional only.",
+  "notes": "Autonomous bounded iteration; never retry under a different key if submission status is uncertain."
+}
