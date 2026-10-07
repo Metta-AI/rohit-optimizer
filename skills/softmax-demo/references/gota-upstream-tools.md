@@ -50,12 +50,17 @@ sudo apt-get install -y build-essential git git-lfs libcurl4-openssl-dev \
 
 On Linux, also install [Nim](https://nim-lang.org/install_unix.html) and
 [uv](https://docs.astral.sh/uv/getting-started/installation/) using their official
-installation instructions. Then install [Nimby](https://github.com/treeform/nimby)
-and select the compiler version used for this guide:
+installation instructions. Verify Nim is version 2.2.10 or newer and that `nimble`
+is available before installing Nimby. Then install [Nimby](https://github.com/treeform/nimby)
+with Nimble (not `uv tool install`, which searches the Python package registry),
+select the compiler version used for this guide, and verify both tools:
 
 ```sh
+nim --version
+nimble --version
 nimble install -y nimby
 export PATH="$HOME/.nimble/bin:$HOME/.local/bin:$PATH"
+nimby --version
 nimby use 2.2.10
 export PATH="$HOME/.nimby/nim/bin:$PATH"
 nim --version
@@ -63,7 +68,10 @@ git lfs version
 uv --version
 ```
 
-Keep these PATH entries in your shell configuration for later sessions.
+Keep these PATH entries in your shell configuration for later sessions. Do not
+run a compound download/checksum/extraction command in the hosted IDE shell;
+perform binary setup in small, approval-visible steps and stop at an execution
+guard instead of changing the command to evade it.
 
 ## 2. Clone and install dependencies
 

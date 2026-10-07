@@ -22,4 +22,4 @@ Source run: Gods of the Arena release `2026.10.6.1`, hosted Polyworld source com
 
 Run `python3 -m json.tool <file> >/dev/null` on any JSON file if only syntax validation is needed. The verifier makes no network calls or evaluations. Verify replay bytes against the manifest only when those bytes are available; a matching hash does not mean the replay was inspected.
 
-`toolchain-setup-blocker.md` distinguishes the blocked Nim binary download/extraction command from the earlier runbook script's Python-package resolver failure (`uv tool install nimby` versus the runbook's Nimble-based Nimby install). No evaluation or replay-toolchain setup command is run by this validation.
+`toolchain-setup-blocker.md` distinguishes the blocked Nim binary download/extraction command from the earlier runbook script's Python-package resolver failure (`uv tool install nimby` versus the runbook's Nimble-based Nimby install) and documents an upstream-aligned corrected bootstrap sequence. That sequence is documentation only; no retry, bypass, or setup command is run by this bundle validation.
