@@ -87,7 +87,7 @@ def main():
         status = 'completed'
         try:
             with output_path.open('xb') as output:
-                while selector.get_map():
+                while selector.get_map() or process.poll() is None:
                     if interrupted:
                         status = 'interrupted'
                         break
@@ -110,11 +110,6 @@ def main():
                             break
                     if status != 'completed':
                         break
-                if status == 'completed':
-                    while process.poll() is None and time.monotonic() < deadline:
-                        time.sleep(0.05)
-                    if process.poll() is None:
-                        status = 'timeout'
         finally:
             # Kill descendants too, including grandchildren holding the output pipe open.
             if process.poll() is None or selector.get_map():

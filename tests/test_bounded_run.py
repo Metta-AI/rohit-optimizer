@@ -59,6 +59,20 @@ class BoundedRunTests(unittest.TestCase):
             result = subprocess.run(command, capture_output=True, text=True, timeout=5)
             self.assertEqual(json.loads(result.stdout)['status'], 'reconciliation_required')
 
+    def test_interruption_after_child_closes_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            marker = Path(directory) / 'ready'
+            code = f'import os,time; os.close(1); os.close(2); open({str(marker)!r}, "w").close(); time.sleep(30)'
+            command = [sys.executable, str(RUNNER), '--state-dir', directory, '--key', 'test',
+                       '--reserve-mib', '1', '--', sys.executable, '-c', code]
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            deadline = time.monotonic() + 5
+            while not marker.exists() and time.monotonic() < deadline:
+                time.sleep(0.02)
+            process.send_signal(signal.SIGTERM)
+            output, errors = process.communicate(timeout=5)
+            self.assertEqual(json.loads(output)['status'], 'interrupted', errors)
+
     def test_low_disk_blocks_before_command_runs(self):
         with tempfile.TemporaryDirectory() as directory:
             result = self.run_operation(directory, 'raise SystemExit("must not run")', '--reserve-mib', '1000000000')
