@@ -19,3 +19,8 @@ Checkpoint progress after each external operation. Reconcile recorded request ID
 No background loop is enabled by installing this profile. Start bounded work only from the IDE's authorized objective.
 
 For GOTA, the softmax-demo references are the current executable platform/game binding. They supersede older seed API helper recipes. Use the supported CLI instead of the legacy helper scripts.
+
+Complete the whole authorized objective without routine human approvals between steps. Use the
+softmax-demo bounded runner for builds and replay work; do not run full replay state dumps.
+A restart means reconcile the saved checkpoint, not repeat remote requests. Missing readiness,
+repeated failures or exhausted task bounds produce one actionable blocked report, not a polling loop.

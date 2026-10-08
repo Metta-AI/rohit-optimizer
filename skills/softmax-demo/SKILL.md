@@ -12,6 +12,14 @@ and references/gota-analysis.md for strategy and source-matched replay analysis.
 contains native tool setup; its large tournament examples are reference only, not authorized demo commands.
 These current CLI recipes supersede the seed's dated eval_request.py/fetch_artifacts.py/lifecycle.py API wrappers.
 
+## Autonomous execution contract
+
+Read references/autonomy.md before doing work. No unbounded shell processes or replay dumps.
+A task must have an objective, a maximum request count, and a durable checkpoint. Complete all
+steps inside that authorization without asking between ordinary operations. Never treat chat
+reconnection as permission to repeat a remote write. A failed prerequisite is a typed setup failure,
+not an instruction to ask a human to approve individual commands repeatedly.
+
 ## Ground-zero bootstrap
 
 Run this installed skill's `scripts/bootstrap.sh` after the provisioner supplies Git authentication and uv.
