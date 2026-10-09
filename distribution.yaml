@@ -1,5 +1,5 @@
 name: softmax-research-demo
-version: 0.2.0
+version: 0.3.0
 description: IDE-driven GOTA policy development proof of concept
 # Keep mutable research memory and policy checkouts outside distribution ownership.
 distribution_owned:
@@ -7,3 +7,8 @@ distribution_owned:
   - config.yaml
   - SOUL.md
   - skills
+  - plugins
+env_requires:
+  - name: API_SERVER_KEY
+    description: Instance-specific key shared by the loopback Hermes API and bridge config.json service_key.
+    required: true

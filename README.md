@@ -1,5 +1,8 @@
 # Hosted GOTA demo setup
 
+The profile includes the Softmax IDE bridge as a Hermes platform plugin.
+See [bridge provisioning](docs/bridge.md) for instance credentials and startup.
+
 This checkout includes a pinned published CLI environment and a Hermes profile distribution.
 Start with skills/softmax-demo/SKILL.md. Run its bootstrap and scoped-auth setup before research.
 The hosted agent must itself discover the league, develop/upload, evaluate, inspect replays, analyze and push its report.
