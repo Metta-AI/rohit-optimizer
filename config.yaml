@@ -23,3 +23,15 @@ auxiliary:
 security:
   redact_secrets: true
   tirith_enabled: true
+
+plugins:
+  enabled:
+    - softmax
+gateway:
+  softmax:
+    enabled: true
+  api_server:
+    enabled: true
+    extra:
+      host: 127.0.0.1
+      port: 8642

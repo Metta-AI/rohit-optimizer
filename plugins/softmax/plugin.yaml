@@ -1,0 +1,5 @@
+name: softmax
+label: Softmax
+kind: platform
+version: 1.0.0
+description: Softmax IDE chat and research bridge
